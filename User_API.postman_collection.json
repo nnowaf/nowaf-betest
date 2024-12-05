@@ -1,0 +1,265 @@
+{
+	"info": {
+		"_postman_id": "79a9618a-f9e4-478f-8402-6bc8d8d7c8b3",
+		"name": "Karlo",
+		"description": "**ENDPOINT :**\n\n1. Public\n    \n    1. `api/users/add`\n        \n    2. `api/users/all`\n        \n    3. `api/auth/token`\n        \n2. Private\n    \n    1. `api/users/account/:accountNumber`\n        \n    2. `api/users/identity/:identityNumber`\n        \n    3. `api/users/:id` (UPDATE USER)\n        \n    4. `api/users/:id` (DELETE USER)",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "19249150"
+	},
+	"item": [
+		{
+			"name": "user",
+			"item": [
+				{
+					"name": "add account",
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"userName\" : \"nowaf\",\n    \"accountNumber\" : \"ACC01\",\n    \"emailAddress\" : \"nowaf@nnowaf.com\",\n    \"identityNumber\" : \"IDN1\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{prod}}/api/users/add",
+							"host": [
+								"{{prod}}"
+							],
+							"path": [
+								"api",
+								"users",
+								"add"
+							]
+						},
+						"description": "Melakukan registrasi user"
+					},
+					"response": []
+				},
+				{
+					"name": "get all accounts",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:3000/api/users/all",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"api",
+								"users",
+								"all"
+							]
+						},
+						"description": "Mengambil semua data users yang ada"
+					},
+					"response": []
+				},
+				{
+					"name": "get user by accountNumber",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2NzUxZjkzOWRiNjdkMGNkMTdkMGU3MzciLCJpYXQiOjE3MzM0MjU1OTksImV4cCI6MTczMzQyOTE5OX0.oUZfOSLRSbuIAKOqbXfuQz6pLtSPVcnEtDNQS203cAo",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{prod}}/api/users/account/ACC01",
+							"host": [
+								"{{prod}}"
+							],
+							"path": [
+								"api",
+								"users",
+								"account",
+								"ACC01"
+							]
+						},
+						"description": "Mengambil data user berdasarkan `accountNumber`"
+					},
+					"response": []
+				},
+				{
+					"name": "get user by identityNumber",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2NzUxZjkzOWRiNjdkMGNkMTdkMGU3MzciLCJpYXQiOjE3MzM0MjU1OTksImV4cCI6MTczMzQyOTE5OX0.oUZfOSLRSbuIAKOqbXfuQz6pLtSPVcnEtDNQS203cAo",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{prod}}/api/users/identity/IDN1",
+							"host": [
+								"{{prod}}"
+							],
+							"path": [
+								"api",
+								"users",
+								"identity",
+								"IDN1"
+							]
+						},
+						"description": "Mengambil data user berdasarkan `identityNumber`"
+					},
+					"response": []
+				},
+				{
+					"name": "update user",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2NzUxZjkzOWRiNjdkMGNkMTdkMGU3MzciLCJpYXQiOjE3MzM0MjU1OTksImV4cCI6MTczMzQyOTE5OX0.oUZfOSLRSbuIAKOqbXfuQz6pLtSPVcnEtDNQS203cAo",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"userName\": \"nowafUbah\",\n    \"accountNumber\": \"ACC02\",\n    \"emailAddress\": \"nowaf@nnowaf.com\",\n    \"identityNumber\" : \"IDN1\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{prod}}/api/users/6751f939db67d0cd17d0e737",
+							"host": [
+								"{{prod}}"
+							],
+							"path": [
+								"api",
+								"users",
+								"6751f939db67d0cd17d0e737"
+							]
+						},
+						"description": "Update data user berdasarkan id usernya"
+					},
+					"response": []
+				},
+				{
+					"name": "delete user",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2NzUxZjkzOWRiNjdkMGNkMTdkMGU3MzciLCJpYXQiOjE3MzM0MjU1OTksImV4cCI6MTczMzQyOTE5OX0.oUZfOSLRSbuIAKOqbXfuQz6pLtSPVcnEtDNQS203cAo",
+									"type": "string"
+								}
+							]
+						},
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{prod}}/api/users/6751e155a08e5e9c3babbcdb",
+							"host": [
+								"{{prod}}"
+							],
+							"path": [
+								"api",
+								"users",
+								"6751e155a08e5e9c3babbcdb"
+							]
+						},
+						"description": "Menghapus user berdasarkan id user"
+					},
+					"response": []
+				}
+			],
+			"description": "CRUD Users"
+		},
+		{
+			"name": "getToken",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"emailAddress\" : \"nowaf@nnowaf.com\",\n    \"identityNumber\" : \"IDN1\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{prod}}/api/auth/token",
+					"host": [
+						"{{prod}}"
+					],
+					"path": [
+						"api",
+						"auth",
+						"token"
+					]
+				},
+				"description": "Generate token JWT"
+			},
+			"response": []
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"packages": {},
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"packages": {},
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "local",
+			"value": "http://localhost:3000",
+			"type": "string"
+		},
+		{
+			"key": "prod",
+			"value": "https://nowaf-betest-production.up.railway.app",
+			"type": "string"
+		}
+	]
+}
